@@ -77,7 +77,7 @@ endif
 
 GIT_SHA ?= $(shell git rev-parse --short HEAD)
 
-docker: html
+docker:
 	docker build . -t eu.gcr.io/xamaral/static-web:$(GIT_SHA)
 
 
