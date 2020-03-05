@@ -3,9 +3,7 @@
 \setlist[itemize]{topsep=6pt}
 \usepackage{titlesec}
 \titleformat{\subsection}[block]{\Large\bfseries\filcenter}{}{1em}{}
-
 \usepackage[nohead,nofoot,hmargin=2cm,vmargin=1cm]{geometry}
-\usepackage[default]{opensans}
 \usepackage{tabularx}
 \usepackage{wasysym}
 \usepackage{marvosym}
@@ -24,19 +22,22 @@
 \newcommand{\centry}[3]{\paragraph{#1} \textit{#2}%
 \hfill#3\\[2pt]}
 %
+\renewcommand{\familydefault}{\sfdefault}
 
 
 \begin{document}
 \begin{tabularx}{\linewidth}{XX}
   \begin{flushleft}
-    {\large PAUL RUDIN}
+    {\large PAUL RUDIN}\\[\baselineskip]
+    \href{https://github.com/PaulRudin}{https://github.com/PaulRudin}\\
+    \href{https://www.linkedin.com/in/paulrudin/}{https://www.linkedin.com/in/paulrudin}
   \end{flushleft}
 &
   \begin{flushright}
-    2 Sedley Taylor Road, Cambridge, CB2 8PW\\
-    Phone: 01223 243569\\
-    Mobile: 07939 720169\\
-    Email: \href{mailto:paul@rudin.co.uk}{paul@rudin.co.uk}
+    \href{tel:+447939720169}{+44 7939 720169}\\
+    \href{mailto:paul@rudin.co.uk}{paul@rudin.co.uk}\\[\baselineskip]
+    2 Sedley Taylor Road,\\
+    Cambridge, CB2 8PW
   \end{flushright}
 \end{tabularx}
 
