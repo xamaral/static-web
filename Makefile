@@ -76,13 +76,19 @@ else
 endif
 
 GIT_SHA ?= $(shell git rev-parse --short HEAD)
+GIT_TAG ?= $(shell git describe --tags --abbrev=0 --dirty)
+NAME := static-web
+REGISTRY := eu.gcr.io
+IMAGE_NAME := $(REGISTRY)/$(NAME)
+LOCAL_TAGS := -t $(NAME):$(GIT_SHA) -t $(NAME):latest -t $(NAME):$(GIT_TAG)
+REG_TAGS := -t $(IMAGE_NAME):$(GIT_SHA) -t $(IMAGE_NAME):latest -t $(IMAGE_NAME):$(GIT_TAG)
+
 
 docker: html
-	docker build . -t eu.gcr.io/xamaral/static-web:$(GIT_SHA)
-
+	docker build . $(LOCAL_TAGS) $(REG_TAGS)
 
 push: docker
-	docker push eu.gcr.io/xamaral/static-web:$(GIT_SHA)
+	docker push $(IMAGE_NAME)
 
 
 

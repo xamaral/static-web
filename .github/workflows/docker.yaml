@@ -1,0 +1,26 @@
+name: Build and push image
+on:
+  push:
+    tags:
+      - '*'
+      - '!flux-*'
+jobs:
+  build_and_push:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install jsonnet
+        run: ./deploy/scripts/install_jsonnet.sh
+
+      - name: build
+        run: make docker
+
+      - name: push
+        env: 
+          GKEY: ${{secrets.GOOGLE_KEY}}
+
+        run: |
+          # fixme - get the hostname from the registry name
+          echo "$GKEY" | docker login -u _json_key --password-stdin https://eu.gcr.io
+          make push
