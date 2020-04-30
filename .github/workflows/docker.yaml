@@ -14,6 +14,7 @@ jobs:
         run: ./scripts/install_jsonnet.sh
 
       - name: build
+        uses: docker://thomasweise/docker-texlive-full:latest
         run: make docker
 
       - name: push
