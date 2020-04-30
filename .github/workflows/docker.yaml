@@ -6,6 +6,7 @@ on:
       - '!flux-*'
 jobs:
   build_and_push:
+    runs-on: ubuntu-18.04
     container:
       image: thomasweise/docker-texlive-full:latest
     steps:
