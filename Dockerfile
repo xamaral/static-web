@@ -24,9 +24,6 @@ RUN make html
 
 FROM nginx:1.17.0
 
-COPY --from=tex /app/output /usr/share/nginx/html
+COPY --from=py /app/output /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/nginx.conf
-
-
-

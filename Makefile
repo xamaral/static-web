@@ -83,7 +83,6 @@ IMAGE_NAME := $(REGISTRY)/$(NAME)
 LOCAL_TAGS := -t $(NAME):$(GIT_SHA) -t $(NAME):latest -t $(NAME):$(GIT_TAG)
 REG_TAGS := -t $(IMAGE_NAME):$(GIT_SHA) -t $(IMAGE_NAME):latest -t $(IMAGE_NAME):$(GIT_TAG)
 
-
 docker: html
 	docker build . $(LOCAL_TAGS) $(REG_TAGS)
 
