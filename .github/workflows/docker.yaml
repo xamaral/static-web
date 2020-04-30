@@ -6,7 +6,8 @@ on:
       - '!flux-*'
 jobs:
   build_and_push:
-    runs-on: ubuntu-18.04
+    container:
+      image: thomasweise/docker-texlive-full:latest
     steps:
       - uses: actions/checkout@v2
 
@@ -14,7 +15,6 @@ jobs:
         run: ./scripts/install_jsonnet.sh
 
       - name: build
-        uses: docker://thomasweise/docker-texlive-full:latest
         run: make docker
 
       - name: push
