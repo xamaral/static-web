@@ -16,7 +16,9 @@ jobs:
         run: ./scripts/install_jsonnet.sh
 
       - name: install git
-        run: apt-get install -y git 
+        run: |
+          apt-get update
+          apt-get install -y git 
       - name: build
         run: make docker
 
