@@ -24,7 +24,9 @@ WORKDIR /app
 
 RUN pip install pipenv
 
-RUN pipenv install --deploy --system
+RUN pipenv lock --requirements > requirements.txt
+
+RUN pip3 install -r requirements.txt
 
 RUN make html
 
