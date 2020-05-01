@@ -24,7 +24,7 @@ WORKDIR /app
 
 RUN pip install pipenv
 
-RUN pipenv install --deploy
+RUN pipenv install --deploy --system
 
 RUN make html
 
