@@ -21,7 +21,7 @@ jobs:
           apt-get install -y git python3 python3-pip
 
       - name: install pipenv
-        run: pip install pipenv
+        run: pip3 install pipenv
 
       - name: build
         run: make docker
