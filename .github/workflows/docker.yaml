@@ -4,6 +4,7 @@ on:
     tags:
       - '*'
       - '!flux-*'
+
 jobs:
   build_and_push:
     runs-on: ubuntu-18.04
@@ -24,6 +25,10 @@ jobs:
         run: pip3 install pipenv
 
       - name: build
+        env:
+          GIT_SHA: ${{ github.sha }}
+          GIT_TAG: ${{ github.ref }}
+
         run: make docker
 
       - name: push

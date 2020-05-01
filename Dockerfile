@@ -2,7 +2,8 @@ FROM thomasweise/texlive AS tex
 
 ARG GIT_SHA
 ENV GIT_SHA=$GIT_SHA
-
+ARG GIT_TAG
+ENV GIT_TAG=$GIT_TAG
 
 COPY . /app
 
@@ -10,7 +11,12 @@ WORKDIR /app
 
 RUN make tex/cv.pdf
 
-FROM python:3.7.3-stretch AS py
+ARG GIT_SHA
+ENV GIT_SHA=$GIT_SHA
+ARG GIT_TAG
+ENV GIT_TAG=$GIT_TAG
+
+FROM python:3.8.2-buster AS py
 
 COPY --from=tex /app /app
 
