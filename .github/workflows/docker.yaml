@@ -16,18 +16,12 @@ jobs:
         run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
         
 
-      - name: build
+      - name: build and push
         env:
           GIT_SHA: ${{ github.sha }}
           GIT_TAG: ${{ steps.get_version.outputs.version }}
-
-        run: make docker
-
-      - name: push
-        env: 
           GKEY: ${{secrets.GOOGLE_KEY}}
 
         run: |
-          # fixme - get the hostname from the registry name
           echo "$GKEY" | docker login -u _json_key --password-stdin https://eu.gcr.io
           make push
