@@ -11,10 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
+        
+
       - name: build
         env:
           GIT_SHA: ${{ github.sha }}
-          GIT_TAG: ${{ github.ref }}
+          GIT_TAG: ${{ steps/get_version.outputs.version }}
 
         run: make docker
 
