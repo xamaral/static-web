@@ -8,21 +8,8 @@ on:
 jobs:
   build_and_push:
     runs-on: ubuntu-18.04
-    container:
-      image: thomasweise/docker-texlive-full:latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: install jsonnet
-        run: ./scripts/install_jsonnet.sh
-
-      - name: install git and pipenv
-        run: |
-          apt-get update
-          apt-get install -y git python3.8 python3-pip python3-distutils
-
-      - name: install pipenv
-        run: pip3 install pipenv
 
       - name: build
         env:
