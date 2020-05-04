@@ -8,8 +8,8 @@ handling, tests, endpoint security) - this is just to show how to get a minimal
 working example.
 
 If you want to follow along and run all of this you'll need docker,
-docker-compose, python3.7 or later, pip and pipenv. I've only tested on ubuntu 18.04, but probably
-everything will work as long as docker works.
+docker-compose, python3.7 or later, pip and pipenv. I've only tested on ubuntu
+18.04, but probably everything will work as long as docker works.
 
 You can get all of the code from
 [github](https://github.com/PaulRudin/xamaral/tree/blog-2019-06-17/2auth). Note
